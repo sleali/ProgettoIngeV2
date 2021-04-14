@@ -21,11 +21,12 @@ public class TransizionePN extends TransizioneN {
 		this.peso = peso;
 	}
 	
+	public int getID() {
+		return super.getID();
+	}
+	
 	public boolean isEqual(TransizionePN tranPar)
 	{
-		if(tranPar.getID() == super.getID() && tranPar.getPeso() == this.getPeso())
-			return true;
-		else 
-			return false;
+		return (tranPar.getID() == super.getID() && tranPar.getPeso() == this.getPeso());
 	}
 }

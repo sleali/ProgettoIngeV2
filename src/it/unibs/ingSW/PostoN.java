@@ -18,9 +18,6 @@ public class PostoN {
 	
 	public boolean isEqual(PostoN postoPar)
 	{
-		if(postoPar.getID() == this.ID)
-			return true;
-		else 
-			return false;
+		return postoPar.getID() == this.ID;
 	}
 }

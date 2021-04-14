@@ -21,11 +21,12 @@ public class PostoPN extends PostoN {
 		return marcatura;
 	}
 	
+	public int getID() {
+		return super.getID();
+	}
+	
 	public boolean isEqual(PostoPN postoPar)
 	{
-		if(postoPar.getID() == super.getID() && postoPar.getMarcatura() == this.marcatura)
-			return true;
-		else 
-			return false;
+		return (postoPar.getID() == super.getID() && postoPar.getMarcatura() == this.marcatura);
 	}
 }

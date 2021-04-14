@@ -18,9 +18,6 @@ private int ID;
 	
 	public boolean isEqual(TransizioneN tranPar)
 	{
-		if(tranPar.getID() == this.ID)
-			return true;
-		else 
-			return false;
+		return tranPar.getID() == this.ID;
 	}
 }

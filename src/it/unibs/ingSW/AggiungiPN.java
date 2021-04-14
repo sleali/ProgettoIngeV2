@@ -47,7 +47,7 @@ public class AggiungiPN {
 						}
 						descr = InputDati.leggiIntero("Inserire il numero della descrizione "
 								+ "che si desidera convertire: ", 1, names.length);
-						reteN.carica(DIRECTORYN + names[descr - 1]);
+						reteN.carica(DIRECTORYN + names[descr - 1], 2);
 						creaPN(reteN); //Metodo per convertire la rete N in rete PN
 					}
 					else 
@@ -60,7 +60,7 @@ public class AggiungiPN {
 	
 	private void creaPN(Rete reteN) {
 		Rete pn = new Rete();
-		for (ElementoN el : reteN.getElementi()) {
+		for (Elemento el : reteN.getElementi()) {
 			int peso = InputDati.leggiIntero("Inserisci peso della transizione con id "+el.getIdTransizione()+": ", 1, Integer.MAX_VALUE);
 			int marcatura = InputDati.leggiIntero("Inserisci marcatura del posto con id "+el.getIdPosto()+": ", 0, Integer.MAX_VALUE);
 			
@@ -68,8 +68,8 @@ public class AggiungiPN {
 			
 			pn.add(elPN);
 		}
-		int salva = InputDati.leggiIntero("\n\nVuoi salvare?\n1) NO\n2) SI", 1, 2);
-		if(salva==2) {
+		int salva = InputDati.leggiIntero("\n\nVuoi salvare?\n1) SI\n2) NO", 1, 2);
+		if(salva==1) {
 			String filename;
 			boolean exist, esito;
 			if(pn.size() > 0)
@@ -95,9 +95,7 @@ public class AggiungiPN {
 	
 	private boolean checkDuplicate(Rete rete)
 	{
-		
 		boolean find = false;
-		Rete reteEsistente = new Rete();
 		File dir = new File(DIRECTORYPN);
 		String names[] = dir.list(new FilenameFilter() {
 			@Override
@@ -114,8 +112,9 @@ public class AggiungiPN {
 			}
 		});
 		for (int i = 0; i < names.length && !find; i++) 
-		{		
-			reteEsistente.carica(DIRECTORYPN + names[i]);
+		{
+			Rete reteEsistente = new Rete();
+			reteEsistente.carica(DIRECTORYPN + names[i], 2);
 			if (rete.isEqual(reteEsistente)) 
 				find = true;
 		}

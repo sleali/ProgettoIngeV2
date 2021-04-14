@@ -48,16 +48,13 @@ public class VisualizzaPN {
 							{
 								System.out.println(i + ") " + names[i - 1]);
 							}
-							descr = InputDati.leggiIntero("Inserire il numero della descrizione "
-									+ "che si desidera visualizzare: ", 1, names.length);
-							rete.carica(DIRECTORY + names[descr - 1]);
+							descr = InputDati.leggiIntero("Inserire il numero della descrizione che si desidera visualizzare: ", 1, names.length);
+							rete.carica(DIRECTORY + names[descr - 1], 2);
 							System.out.println("\nElenco degli elementi della rete " + descr + ":");
-							for(int i = 0; i < rete.size(); i++)
-							{
-								System.out.println("");
-								System.out.println("Elemento " + (i + 1) + ":");
-								System.out.println(rete.printElemento(i));
-								System.out.println("");
+							for(Elemento el : rete.getElementi()){
+								System.out.println("\n");
+								System.out.println(el.print());
+								System.out.println("\n");
 							}
 						}
 						else 

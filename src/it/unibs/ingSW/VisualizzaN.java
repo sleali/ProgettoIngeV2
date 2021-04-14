@@ -49,7 +49,7 @@ public class VisualizzaN {
 							}
 							descr = InputDati.leggiIntero("Inserire il numero della descrizione "
 									+ "che si desidera visualizzare: ", 1, names.length);
-							rete.carica(DIRECTORY + names[descr - 1]);
+							rete.carica(DIRECTORY + names[descr - 1], 1);
 							System.out.println("\nElenco degli elementi della rete " + descr + ":");
 							for(int i = 0; i < rete.size(); i++)
 							{

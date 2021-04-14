@@ -101,9 +101,7 @@ public class AggiungiN {
 	
 	private boolean checkDuplicate(Rete rete)
 	{
-		
 		boolean find = false;
-		Rete reteEsistente = new Rete();
 		File dir = new File(DIRECTORY);
 		String names[] = dir.list(new FilenameFilter() {
 			@Override
@@ -120,8 +118,9 @@ public class AggiungiN {
 			}
 		});
 		for (int i = 0; i < names.length && !find; i++) 
-		{		
-			reteEsistente.carica(DIRECTORY + names[i]);
+		{
+			Rete reteEsistente = new Rete();
+			reteEsistente.carica(DIRECTORY + names[i], 1);
 			if (rete.isEqual(reteEsistente)) 
 				find = true;
 		}

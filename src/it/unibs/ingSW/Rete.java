@@ -5,21 +5,21 @@ import java.util.*;
 import com.google.gson.Gson;
 
 public class Rete {
-	protected Vector<ElementoN> rete;
+	protected Vector<Elemento> rete;
 
 	public Rete() {
 		rete = new Vector<>();
 	}
 
-	public boolean add(ElementoN e) {
+	public boolean add(Elemento e) {
 		if (!alreadyExist(e)) // posso procedere all'aggiunta solo se non esiste un elemento identico
 			return rete.add(e);
 		return false;
 	}
 
-	private boolean alreadyExist(ElementoN e) {
+	private boolean alreadyExist(Elemento e) {
 		boolean exist = false;
-		for (ElementoN elemento : rete) {
+		for (Elemento elemento : rete) {
 			if (elemento.isEqual(e))
 				exist = true;
 		}
@@ -27,9 +27,9 @@ public class Rete {
 		return exist;
 	}
 
-	public void carica(String file) {
+	public void carica(String file, int i) {
 		String s;
-		ElementoN e;
+		Elemento e;
 		Gson gson = new Gson();
 		File f = new File(file);
 		BufferedReader source;
@@ -39,7 +39,10 @@ public class Rete {
 			do {
 				s = source.readLine();
 				if (!(s == null)) {
-					e = gson.fromJson(s, ElementoN.class);
+					if(i==1)
+						e = gson.fromJson(s, ElementoN.class);
+					else
+						e = gson.fromJson(s, ElementoPN.class);
 					this.rete.add(e);
 				}
 			} while (!(s == null));
@@ -57,7 +60,7 @@ public class Rete {
 				PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(f)));
 				Gson gson = new Gson();
 				String jsonString;
-				for (ElementoN elemento : rete) {
+				for (Elemento elemento : rete) {
 					jsonString = gson.toJson(elemento);
 					pw.println(jsonString);
 				}
@@ -78,11 +81,11 @@ public class Rete {
 		this.rete.remove(index);
 	}
 
-	public ElementoN getElemento(int index) {
+	public Elemento getElemento(int index) {
 		return this.rete.get(index);
 	}
 	
-	public Vector<ElementoN> getElementi(){
+	public Vector<Elemento> getElementi(){
 		return rete;
 	}
 
@@ -91,7 +94,7 @@ public class Rete {
 	}
 
 	public boolean isEqual(Rete retePar) {
-		Vector<ElementoN> copy = rete;
+		Vector<Elemento> copy = rete;
 		boolean equal = false;
 		for (int i = 0; i < copy.size(); i++) {
 			for (int k = 0; k < retePar.size() && !equal; k++) {
