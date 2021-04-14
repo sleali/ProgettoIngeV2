@@ -1,18 +1,15 @@
 package it.unibs.ingSW;
 
-public class Elemento 
-{
-	private Posto posto;
-	private Transizione transizione;
+public class ElementoN {
+	private PostoN posto;
+	private TransizioneN transizione;
 	private boolean verso; //se true allora il verso va dal posto alla transizione
 						   //se false allora il verso va dalla transizione al posto
 	
-	//passare direttamente l'oggetto già creato
-	public Elemento(int IDp, int IDt, boolean verso)
+	public ElementoN(PostoN posto, TransizioneN transizione, boolean verso)
 	{
-		this.posto = new Posto(IDp);
-		//this.posto = postoParam;
-		this.transizione = new Transizione(IDt);
+		this.posto = posto;
+		this.transizione = transizione;
 		this.verso = verso;
 	}
 
@@ -24,19 +21,19 @@ public class Elemento
 		this.verso = verso;
 	}
 	
-	public Posto getPosto() {
+	public PostoN getPosto() {
 		return posto;
 	}
 
-	public void setPosto(Posto posto) {
+	public void setPosto(PostoN posto) {
 		this.posto = posto;
 	}
 
-	public Transizione getTransizione() {
+	public TransizioneN getTransizione() {
 		return transizione;
 	}
 
-	public void setTransizione(Transizione transizione) {
+	public void setTransizione(TransizioneN transizione) {
 		this.transizione = transizione;
 	}
 
@@ -50,7 +47,7 @@ public class Elemento
 		return transizione.getID();
 	}
 	
-	public boolean isEqual(Elemento ePar)
+	public boolean isEqual(ElementoN ePar)
 	{
 		if(ePar.getPosto().isEqual(this.posto) && ePar.getTransizione().isEqual(this.transizione) 
 				&& (ePar.getVerso() == this.verso))

@@ -1,10 +1,9 @@
 package it.unibs.ingSW;
 
-public class Posto 
-{
-	private int ID;
+public class TransizioneN {
+private int ID;
 	
-	public Posto(int ID)
+	public TransizioneN(int ID)
 	{
 		this.ID = ID;
 	}
@@ -17,9 +16,9 @@ public class Posto
 		ID = iD;
 	}
 	
-	public boolean isEqual(Posto postoPar)
+	public boolean isEqual(TransizioneN tranPar)
 	{
-		if(postoPar.getID() == this.ID)
+		if(tranPar.getID() == this.ID)
 			return true;
 		else 
 			return false;

@@ -1,11 +1,16 @@
 package it.unibs.ingSW;
 
-public class PostoPN extends Posto{
+public class PostoPN extends PostoN {
 	private int marcatura;
+	
+	public PostoPN(int ID, int marcatura) {
+		super(ID);
+		this.marcatura = (marcatura>=0) ? marcatura : 0;
+	}
+	
 	public PostoPN(int ID) {
 		super(ID);
-		// TODO Auto-generated constructor stub
-		marcatura=0;
+		this.marcatura=0;
 	}
 	
 	public void setMarcatura(int marcatura) {

@@ -5,9 +5,9 @@ import java.io.FilenameFilter;
 
 import it.unibs.fp.mylib.InputDati;
 
-public class Visualizza 
-{
-	public Visualizza() {}
+public class VisualizzaN {
+	private static final String DIRECTORY = "./salvataggi/retiN/";
+	public VisualizzaN() {}
 	
 	public void print()
 	{
@@ -23,7 +23,7 @@ public class Visualizza
 				case 1: 
 					try 
 					{
-						File dir = new File("./salvataggi/");
+						File dir = new File(DIRECTORY);
 						String names[] = dir.list(new FilenameFilter() {
 							@Override
 							public boolean accept(File dir, String name) {
@@ -41,7 +41,7 @@ public class Visualizza
 						if(names.length > 0)
 						{
 							int descr;
-							N rete = new N();
+							Rete rete = new Rete();
 							System.out.println("\n\nElenco delle descrizioni disponibili:");
 							for(int i = 1; i <= names.length; i++)
 							{
@@ -49,7 +49,7 @@ public class Visualizza
 							}
 							descr = InputDati.leggiIntero("Inserire il numero della descrizione "
 									+ "che si desidera visualizzare: ", 1, names.length);
-							rete.carica("./salvataggi/" + names[descr - 1]);
+							rete.carica(DIRECTORY + names[descr - 1]);
 							System.out.println("\nElenco degli elementi della rete " + descr + ":");
 							for(int i = 0; i < rete.size(); i++)
 							{

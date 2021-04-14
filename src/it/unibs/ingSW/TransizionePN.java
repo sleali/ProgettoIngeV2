@@ -1,15 +1,22 @@
 package it.unibs.ingSW;
 
-public class TransizionePN extends Transizione{
+public class TransizionePN extends TransizioneN {
 	private int peso;
+	
+	public TransizionePN(int ID, int peso) {
+		super(ID);
+		this.peso = (peso>0) ? peso : 1;
+	}
+	
 	public TransizionePN(int ID) {
 		super(ID);
-		// TODO Auto-generated constructor stub
-		peso=1;
+		this.peso=1;
 	}
+	
 	public int getPeso() {
 		return peso;
 	}
+	
 	public void setPeso(int peso) {
 		this.peso = peso;
 	}

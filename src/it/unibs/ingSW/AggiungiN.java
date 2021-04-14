@@ -5,13 +5,14 @@ import java.io.FilenameFilter;
 
 import it.unibs.fp.mylib.InputDati;
 
-public class Aggiungi 
-{
-	public Aggiungi() {}
+public class AggiungiN {
+	private static final String DIRECTORY = "./salvataggi/retiN/";
+
+	public AggiungiN() {}
 	
 	public void add()
 	{
-		N rete = new N();
+		Rete rete = new Rete();
 		int scelta = 0;
 		boolean uscita = false, modifiche = false;
 		do 
@@ -33,7 +34,7 @@ public class Aggiungi
 						verso = true;
 					else 
 						verso = false;
-					Elemento e = new Elemento(IDp, IDt, verso);
+					ElementoN e = new ElementoN(new PostoN(IDp), new TransizioneN(IDt), verso);
 					if(rete.add(e))
 					{
 						modifiche = true;
@@ -53,7 +54,7 @@ public class Aggiungi
 						else 
 						{
 							filename = InputDati.leggiStringa("Inserire il nome con cui si desidera salvare la descrizione: ");
-							esito = rete.salva("./salvataggi/" + filename);
+							esito = rete.salva(DIRECTORY + filename);
 							if(esito)
 							{
 								uscita = true;
@@ -98,12 +99,12 @@ public class Aggiungi
 		return input;
 	}
 	
-	private boolean checkDuplicate(N rete)
+	private boolean checkDuplicate(Rete rete)
 	{
 		
 		boolean find = false;
-		N reteEsistente = new N();
-		File dir = new File("./salvataggi");
+		Rete reteEsistente = new Rete();
+		File dir = new File(DIRECTORY);
 		String names[] = dir.list(new FilenameFilter() {
 			@Override
 			public boolean accept(File dir, String name) {
@@ -120,7 +121,7 @@ public class Aggiungi
 		});
 		for (int i = 0; i < names.length && !find; i++) 
 		{		
-			reteEsistente.carica("./salvataggi/" + names[i]);
+			reteEsistente.carica(DIRECTORY + names[i]);
 			if (rete.isEqual(reteEsistente)) 
 				find = true;
 		}
