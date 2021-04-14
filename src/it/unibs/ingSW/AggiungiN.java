@@ -19,8 +19,8 @@ public class AggiungiN {
 		{
 			System.out.println("\n\nMenu di inserimento di una nuova rete:\n"
 					+ "1) Inserisci un nuovo elemento alla rete \n2) Termina l’inserimento e salva la rete "
-					+ "\n3) Esci senza salvare");
-			scelta = InputDati.leggiIntero("Selezionare una delle voci del menu:", 1, 3);
+					+ "\n\n0) Esci senza salvare");
+			scelta = InputDati.leggiIntero("Selezionare una delle voci del menu:", 0, 2);
 			switch (scelta)
 			{
 				case 1: 
@@ -68,7 +68,7 @@ public class AggiungiN {
 					else 
 						System.out.println("Errore, non e' possibile salvare una rete priva di elementi");
 				break;
-				case 3:
+				case 0:
 					if(modifiche) //distinguo il caso in cui l'utente non ha fatto nulla e quindi può uscire senza 
 						//alcun rischio ed il caso in cui sono state fatte modifiche senza salvare,
 						//in quest'ultimo caso chiedo conferma prima di uscire
@@ -82,7 +82,7 @@ public class AggiungiN {
 				break;
 			}
 		} 
-		while (!((scelta == 2 || scelta == 3) && uscita == true));
+		while (!((scelta == 2 || scelta == 0) && uscita == true));
 	}
 	
 	private Character sceltaDoppia(String messaggio, char scelta1, char scelta2)
@@ -120,7 +120,7 @@ public class AggiungiN {
 		for (int i = 0; i < names.length && !find; i++) 
 		{
 			Rete reteEsistente = new Rete();
-			reteEsistente.carica(DIRECTORY + names[i], 1);
+			reteEsistente.carica(DIRECTORY + names[i], ElementoN.class);
 			if (rete.isEqual(reteEsistente)) 
 				find = true;
 		}

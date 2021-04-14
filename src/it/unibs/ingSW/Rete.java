@@ -27,7 +27,7 @@ public class Rete {
 		return exist;
 	}
 
-	public void carica(String file, int i) {
+	public void carica(String file, Class<?> c) {
 		String s;
 		Elemento e;
 		Gson gson = new Gson();
@@ -39,10 +39,7 @@ public class Rete {
 			do {
 				s = source.readLine();
 				if (!(s == null)) {
-					if(i==1)
-						e = gson.fromJson(s, ElementoN.class);
-					else
-						e = gson.fromJson(s, ElementoPN.class);
+					e = (Elemento) gson.fromJson(s, c);
 					this.rete.add(e);
 				}
 			} while (!(s == null));

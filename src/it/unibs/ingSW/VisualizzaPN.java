@@ -17,8 +17,8 @@ public class VisualizzaPN {
 		{
 			System.out.println("\n\nMenu di visualizzazione delle reti PN:\n"
 					+ "1) Visualizza la descrizione di una rete\n"
-					+ "2) Torna al menu principale");
-			scelta = InputDati.leggiIntero("Selezionare una delle voci del menu:", 1, 2);
+					+ "\n0) Torna al menu principale");
+			scelta = InputDati.leggiIntero("Selezionare una delle voci del menu:", 0, 1);
 			switch (scelta)
 			{
 				case 1: 
@@ -49,7 +49,7 @@ public class VisualizzaPN {
 								System.out.println(i + ") " + names[i - 1]);
 							}
 							descr = InputDati.leggiIntero("Inserire il numero della descrizione che si desidera visualizzare: ", 1, names.length);
-							rete.carica(DIRECTORY + names[descr - 1], 2);
+							rete.carica(DIRECTORY + names[descr - 1], ElementoPN.class);
 							System.out.println("\nElenco degli elementi della rete " + descr + ":");
 							for(Elemento el : rete.getElementi()){
 								System.out.println("\n");
@@ -69,6 +69,6 @@ public class VisualizzaPN {
 				break;
 			}
 		} 
-		while (scelta != 2);
+		while (scelta != 0);
 	}
 }

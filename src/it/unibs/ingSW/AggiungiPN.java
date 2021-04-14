@@ -16,8 +16,8 @@ public class AggiungiPN {
 		do {
 			System.out.println("\n\nMenu di visualizzazione delle reti:\n"
 					+ "1) Visualizza e converti la descrizione di una rete n in una rete pn\n"
-					+ "2) Torna al menu principale");
-			scelta = InputDati.leggiIntero("Selezionare una delle voci del menu:", 1, 2);
+					+ "\n0) Torna al menu principale");
+			scelta = InputDati.leggiIntero("Selezionare una delle voci del menu:", 0, 1);
 			switch (scelta)
 			{
 				case 1:
@@ -47,14 +47,14 @@ public class AggiungiPN {
 						}
 						descr = InputDati.leggiIntero("Inserire il numero della descrizione "
 								+ "che si desidera convertire: ", 1, names.length);
-						reteN.carica(DIRECTORYN + names[descr - 1], 2);
+						reteN.carica(DIRECTORYN + names[descr - 1], ElementoPN.class);
 						creaPN(reteN); //Metodo per convertire la rete N in rete PN
 					}
 					else 
 						System.out.println("Non e' possibile visualizzare alcuna descrizione, nessuna rete e' ancora stata salvata");		
 					break;
 			}
-		} while (scelta != 2);
+		} while (scelta != 0);
 		System.out.println("Uscita dal menù delle reti PN avvenuta");
 	}
 	
@@ -114,7 +114,7 @@ public class AggiungiPN {
 		for (int i = 0; i < names.length && !find; i++) 
 		{
 			Rete reteEsistente = new Rete();
-			reteEsistente.carica(DIRECTORYPN + names[i], 2);
+			reteEsistente.carica(DIRECTORYPN + names[i], ElementoPN.class);
 			if (rete.isEqual(reteEsistente)) 
 				find = true;
 		}
