@@ -15,12 +15,13 @@ public class Menu
 				case 1: 
 					System.out.println("\n");
 					reti();
-				break;
+					break;
 				case 2:
 					reti_petri();
-				break;
+					break;
 				default:
 					System.out.println("Uscita in corso...");
+					break;
 			}
 		} 
 		while (scelta != 0);
