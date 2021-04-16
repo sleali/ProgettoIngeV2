@@ -8,7 +8,7 @@ public class Menu
 		int scelta = 0;
 		do 
 		{
-			System.out.println("Menu principale [utente: configuratore]\n1) Gestione reti N \n2) Gestione reti PN \n\n0) Esci");
+			System.out.println("V2\n\nMenu principale [utente: configuratore]\n1) Gestione reti N \n2) Gestione reti PN \n\n0) Esci");
 			scelta = InputDati.leggiIntero("Selezionare una delle voci del menu:", 0, 2);
 			switch (scelta)
 			{
