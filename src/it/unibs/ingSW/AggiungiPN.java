@@ -61,18 +61,19 @@ public class AggiungiPN {
 	
 	private void creaPN(Rete reteN) {
 		Rete pn = new Rete();
-		HashMap<Integer, Integer> pesi = new HashMap<Integer, Integer>();
 		HashMap<Integer, Integer> marcature = new HashMap<Integer, Integer>();
 		
 		
 		for (Elemento el : reteN.getElementi()) {
+			int peso;
 			int marcatura = marcature.containsKey(el.getIdPosto()) ? marcature.get(el.getIdPosto()) : InputDati.leggiIntero("Inserisci marcatura del posto con id "+el.getIdPosto()+": ", 0, Integer.MAX_VALUE);
-			int peso = pesi.containsKey(el.getIdTransizione()) ? pesi.get(el.getIdTransizione()) : InputDati.leggiIntero("Inserisci peso della transizione con id "+el.getIdTransizione()+": ", 1, Integer.MAX_VALUE);
-			
-			pesi.put(el.getIdTransizione(), peso);
+			if(el.getVerso())
+				peso = InputDati.leggiIntero("Inserisci peso della relazione di flusso da posto con id " + el.getIdPosto() + " a transizione con id "+el.getIdTransizione()+": ", 1, Integer.MAX_VALUE);
+			else
+				peso = InputDati.leggiIntero("Inserisci peso della relazione di flusso da transizione con id "+el.getIdTransizione()+" a posto con id " + el.getIdPosto() + ": ", 1, Integer.MAX_VALUE);
 			marcature.put(el.getIdPosto(), marcatura);
 			
-			ElementoPN elPN = new ElementoPN(new PostoPN(el.getIdPosto(), marcatura), new TransizionePN(el.getIdTransizione(), peso), el.getVerso());
+			ElementoPN elPN = new ElementoPN(new PostoPN(el.getIdPosto(), marcatura), new TransizioneN(el.getIdTransizione()), el.getVerso(), peso);
 			
 			pn.add(elPN);
 		}
