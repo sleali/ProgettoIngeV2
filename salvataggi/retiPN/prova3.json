@@ -1,1 +1,2 @@
-{"posto":{"marcatura":7,"ID":1},"transizione":{"peso":7,"ID":1},"verso":true}
+{"posto":{"marcatura":5,"ID":1},"transizione":{"ID":1},"verso":true,"peso":6}
+{"posto":{"marcatura":4,"ID":2},"transizione":{"ID":1},"verso":false,"peso":3}

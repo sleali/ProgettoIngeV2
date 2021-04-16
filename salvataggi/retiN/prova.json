@@ -1,1 +1,2 @@
-{"posto":{"ID":5},"transizione":{"ID":5},"verso":true}
+{"posto":{"ID":1},"transizione":{"ID":1},"verso":true}
+{"posto":{"ID":2},"transizione":{"ID":1},"verso":false}
