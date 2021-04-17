@@ -91,7 +91,7 @@ public class Rete {
 	}
 
 	public boolean isEqual(Rete retePar) {
-		Vector<Elemento> copy = rete;
+		Vector<Elemento> copy = (Vector<Elemento>) rete.clone();
 		boolean equal = false;
 		for (int i = 0; i < copy.size(); i++) {
 			for (int k = 0; k < retePar.size() && !equal; k++) {
@@ -108,5 +108,4 @@ public class Rete {
 		else
 			return false;
 	}
-
 }
