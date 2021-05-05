@@ -2,7 +2,7 @@ package it.unibs.ingSW;
 
 public class ElementoN implements Elemento<ElementoN>{
 	private PostoN posto;
-	private  TransizioneN transizione;
+	private TransizioneN transizione;
 	private boolean verso; //se true allora il verso va dal posto alla transizione
 						   //se false allora il verso va dalla transizione al posto
 	

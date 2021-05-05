@@ -39,6 +39,7 @@ public class AggiungiN {
 					{
 						modifiche = true;
 						System.out.println("Elemento aggiunto con successo!");
+						System.out.println("Dimensione rete attuale: "+rete.size()+" elementi\n");
 					}
 					else 
 						System.out.println("Errore, l'elemento e' già presente nella rete");

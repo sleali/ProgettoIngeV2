@@ -3,8 +3,7 @@ package it.unibs.ingSW;
 public class PostoN {
 	private int ID;
 	
-	public PostoN(int ID)
-	{
+	public PostoN(int ID){
 		this.ID = ID;
 	}
 

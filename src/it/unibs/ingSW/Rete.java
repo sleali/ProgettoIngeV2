@@ -54,6 +54,10 @@ public class Rete {
 		if (this.rete.size() > 0) {
 			try {
 				File f = new File(file + ".json");
+				for(int i = 1; f.exists() && !f.isDirectory(); i++)
+				{
+					f = new File(file + "(" + i + ")" + ".json");
+				}
 				PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(f)));
 				Gson gson = new Gson();
 				String jsonString;
@@ -91,21 +95,29 @@ public class Rete {
 	}
 
 	public boolean isEqual(Rete retePar) {
-		Vector<Elemento> copy = (Vector<Elemento>) rete.clone();
-		boolean equal = false;
-		for (int i = 0; i < copy.size(); i++) {
-			for (int k = 0; k < retePar.size() && !equal; k++) {
-				if (copy.get(i).isEqual(retePar.getElemento(k))) {
-					copy.remove(i);
-					retePar.remove(k);
-					equal = true;
-				}
-			}
-			equal = false;
-		}
-		if (copy.size() == 0 && retePar.size() == 0)
-			return true;
-		else
+		boolean find = false;
+		if(this.rete.size() != retePar.size())
 			return false;
+		else 
+		{
+			for(int i = 0; i < this.rete.size(); i++)
+			{
+				for(int k = 0; k < retePar.size() && !find; k++)
+				{
+					if(this.rete.get(i).isEqual(retePar.getElemento(k)))
+					{
+						retePar.remove(k);
+						find = true;
+					}
+				}
+				if(!find)
+					return false;
+				find = false;
+			}
+			if(retePar.size() == 0)
+				return true;
+			else 
+				return false;
+		}
 	}
 }

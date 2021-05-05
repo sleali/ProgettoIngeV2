@@ -10,7 +10,7 @@ public class ElementoPN implements Elemento<ElementoPN>{
 		this.verso = verso;
 		this.posto = posto;
 		this.transizione = transizione;
-		this.peso = peso;
+		this.peso = (peso<1) ? 1 : peso;
 	}
 
 	public int getPeso() {
@@ -57,11 +57,11 @@ public class ElementoPN implements Elemento<ElementoPN>{
 	
 	public boolean isEqual(ElementoPN ePar)
 	{
-		return (ePar.getPosto().isEqual(posto) && ePar.getTransizione().isEqual(transizione) && (ePar.getVerso() == verso));
+		return (ePar.getPosto().isEqual(posto) && ePar.getTransizione().isEqual(transizione) && (ePar.getVerso() == verso) && this.peso == ePar.getPeso());
+		
 	}
 	
-	public String print()
-	{
+	public String print(){
 		String out = "ID posto: " + posto.getID() + "\nMarcatura: " + posto.getMarcatura() + "\nID transizione: " + transizione.getID() + "\nPeso: " + this.peso;
 		if(verso)
 			out += "\nVerso: da posto a transizione";

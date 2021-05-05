@@ -1,10 +1,9 @@
 package it.unibs.ingSW;
 
 public class TransizioneN {
-private int ID;
-	
-	public TransizioneN(int ID)
-	{
+	private int ID;
+		
+	public TransizioneN(int ID){
 		this.ID = ID;
 	}
 

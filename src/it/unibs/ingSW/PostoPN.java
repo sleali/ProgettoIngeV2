@@ -25,8 +25,11 @@ public class PostoPN extends PostoN {
 		return super.getID();
 	}
 	
-	public boolean isEqual(PostoPN postoPar)
+	public boolean isEqual(PostoPN p)
 	{
-		return (postoPar.getID() == super.getID() && postoPar.getMarcatura() == this.marcatura);
+		if(this.marcatura == p.getMarcatura() && this.getID() == p.getID())
+			return true;
+		else 
+			return false;
 	}
 }
